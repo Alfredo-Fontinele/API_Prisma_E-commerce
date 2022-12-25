@@ -6,6 +6,7 @@ import { validateSchema } from '../middlewares/validations/validateSchema'
 import { productControllers } from './../controllers/productControllers'
 import { createProductSchema } from './../schemas/createProductSchema'
 import { Router } from 'express'
+import { verifyExistCategoryById } from './../middlewares/verifyExistCategoryById';
 
 export const productsRoutes = Router()
 
@@ -21,6 +22,8 @@ productsRoutes.post('/',
 
 productsRoutes.post('/categories',
     validateSchema(createProductCategorySchema),
+    verifyExistProductById,
+    verifyExistCategoryById,
     verifyAlreadyExistProductCategoryByIds,
     productControllers.createProductCategory
 )

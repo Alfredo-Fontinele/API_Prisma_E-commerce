@@ -1,8 +1,8 @@
 import { Product, ProductCategory } from '@prisma/client'
 import { Request } from 'express' 
 import { productModel } from '../database'
-import { IProduct } from './../interfaces/products'
-import { productCategoryModel } from './../database/index'
+import { IProduct } from '../interfaces/products'
+import { productCategoryModel } from '../database/index'
 import { IProductCategory } from '../interfaces/productCategories'
 import 'express-async-errors'
 
