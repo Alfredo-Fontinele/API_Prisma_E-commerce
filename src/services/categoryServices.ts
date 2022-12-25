@@ -2,6 +2,7 @@ import { Category } from '@prisma/client'
 import { Request } from 'express' 
 import { ICategory } from '../interfaces/categories'
 import { categoryModel } from './../database/index'
+import 'express-async-errors'
 
 class CategoryServices {
     async getAllCategories(req:Request):Promise<Category[]> {
@@ -20,6 +21,13 @@ class CategoryServices {
         return await categoryModel.findUnique({
             where: {
                 id: id
+            },
+            include: {
+                ProductCategory: {
+                    select: {
+                        product: true
+                    }
+                }
             }
         })
     }

@@ -4,6 +4,7 @@ import { productModel } from '../database'
 import { IProduct } from './../interfaces/products'
 import { productCategoryModel } from './../database/index'
 import { IProductCategory } from '../interfaces/productCategories'
+import 'express-async-errors'
 
 class ProductServices {
     async getAllProducts(req:Request):Promise<Product[]> {
@@ -12,10 +13,10 @@ class ProductServices {
     async createProduct(req:Request) {
         const { name, price }:IProduct = await req.body
         return await productModel.create({
-          data: {
-            name,
-            price,
-          },
+            data: {
+                name,
+                price
+            }
         })
     }
     async getProductById(req:Request):Promise<Product | null> {
@@ -23,10 +24,17 @@ class ProductServices {
         return await productModel.findUnique({
             where: {
                 id: id
+            },
+            include: {
+                ProductCategory: {
+                    select: {
+                        category: true
+                    }
+                }
             }
         })
     }
-    async createProductCategory(req: Request):Promise<ProductCategory> {
+    async createProductCategory(req: Request):Promise<ProductCategory | null> {
         const { id_product, id_category }:IProductCategory = req.body
         return await productCategoryModel.create({
             data: {
