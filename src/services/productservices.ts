@@ -1,5 +1,5 @@
 import { Product, ProductCategory } from '@prisma/client'
-import { Request } from 'express' 
+import { Request } from 'express'
 import { productModel } from '../database'
 import { IProduct } from '../interfaces/products'
 import { productCategoryModel } from '../database/index'

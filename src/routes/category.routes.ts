@@ -1,6 +1,6 @@
 import { verifyAlreadyExistCategoryByName } from '../middlewares/categories/verifyAlreadyExistCategoryByName'
 import { verifyExistCategoryById } from '../middlewares/categories/verifyExistCategoryById'
-import { createCategorySchema } from './../schemas/createCategorySchema'
+import { categorySchema } from '../schemas/categories'
 import { categoryControllers } from '../controllers/categoryControllers'
 import { validateSchema } from './../middlewares/validations/validateSchema'
 import { Router } from 'express'
@@ -12,7 +12,7 @@ categoriesRoutes.get('/',
 )
 
 categoriesRoutes.post('/', 
-    validateSchema(createCategorySchema),
+    validateSchema(categorySchema),
     verifyAlreadyExistCategoryByName,
     categoryControllers.createCategory
 )
@@ -20,4 +20,15 @@ categoriesRoutes.post('/',
 categoriesRoutes.get('/:id', 
     verifyExistCategoryById,
     categoryControllers.getCategoryById
+)
+
+categoriesRoutes.patch('/:id',
+    validateSchema(categorySchema),
+    verifyExistCategoryById,
+    categoryControllers.editCategory
+)
+
+categoriesRoutes.delete('/:id',
+    verifyExistCategoryById,
+    categoryControllers.deleteCategory
 )

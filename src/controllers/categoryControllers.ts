@@ -18,6 +18,10 @@ class CategoryControllers {
         const data = await categoryServices.editCategory(req)
         return res.status(200).json(data)
     }
+    async deleteCategory(req:Request, res:Response) {
+        const data = await categoryServices.deleteCategory(req)
+        return res.status(204).json(data)
+    }
 }
 
 export const categoryControllers = new CategoryControllers()

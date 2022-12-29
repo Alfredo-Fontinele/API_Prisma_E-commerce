@@ -7,7 +7,9 @@ import { categoryModel } from '../../database/index'
 export const verifyExistCategoryById = async (req:Request, res:Response, next:NextFunction) => {
     const { id } = req.params
     const categoryFound = await categoryModel.findFirst({
-        where: { id }
+        where: { 
+            id
+        }
     })
     if (!categoryFound) {
         throw new AppError('Category Not Exist', 404)

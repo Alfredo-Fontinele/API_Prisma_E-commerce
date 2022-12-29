@@ -41,6 +41,14 @@ class CategoryServices {
             }
         })
     }
+    async deleteCategory(req:Request):Promise<Category> {
+        const { id } = req.params
+        return await categoryModel.delete({
+            where: {
+                id
+            }
+        })
+    }
 }
 
 export const categoryServices = new CategoryServices()

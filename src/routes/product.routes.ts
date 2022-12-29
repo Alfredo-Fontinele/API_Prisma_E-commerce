@@ -1,13 +1,13 @@
 import { verifyAlreadyExistProductCategoryByIds } from '../middlewares/products/verifyAlreadyExistProductCategoryByIds'
 import { verifyAlreadyExistProductByName } from '../middlewares/products/verifyAlreadyExistProductByName'
-import { createProductCategorySchema } from './../schemas/createProductCategorySchema'
+import { productCategorySchema, productSchema } from '../schemas/products'
 import { validateIdCategory } from './../middlewares/validations/validateIdCategory'
 import { verifyExistCategoryById } from '../middlewares/categories/verifyExistCategoryById'
 import { validateIdProduct } from './../middlewares/validations/validateIdProduct'
 import { verifyExistProductById } from '../middlewares/products/verifyExistProductById'
 import { validateSchema } from '../middlewares/validations/validateSchema'
 import { productControllers } from './../controllers/productControllers'
-import { createProductSchema } from './../schemas/createProductSchema'
+
 import { Router } from 'express'
 
 export const productsRoutes = Router()
@@ -17,13 +17,13 @@ productsRoutes.get('/',
 )
 
 productsRoutes.post('/',
-    validateSchema(createProductSchema),
+    validateSchema(productSchema),
     verifyAlreadyExistProductByName, 
     productControllers.createProduct
 )
 
 productsRoutes.post('/categories',
-    validateSchema(createProductCategorySchema),
+    validateSchema(productCategorySchema),
     validateIdProduct,
     validateIdCategory,
     verifyAlreadyExistProductCategoryByIds,
