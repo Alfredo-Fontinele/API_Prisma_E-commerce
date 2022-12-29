@@ -14,6 +14,10 @@ class CategoryControllers {
         const data = await categoryServices.getCategoryById(req)
         return res.status(200).json(data)
     }
+    async editCategory(req:Request, res:Response) {
+        const data = await categoryServices.editCategory(req)
+        return res.status(200).json(data)
+    }
 }
 
 export const categoryControllers = new CategoryControllers()

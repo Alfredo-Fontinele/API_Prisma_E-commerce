@@ -11,16 +11,14 @@ class CategoryServices {
     async createCategory(req:Request):Promise<Category> {
         const { name }:ICategory = await req.body
         return await categoryModel.create({
-            data: { 
-                name 
-            }
+            data: { name }
         })
     }
     async getCategoryById(req:Request):Promise<Category | null> {
         const { id } = req.params
         return await categoryModel.findUnique({
-            where: {
-                id: id
+            where: { 
+                id 
             },
             include: {
                 ProductCategory: {
@@ -28,6 +26,18 @@ class CategoryServices {
                         product: true
                     }
                 }
+            }
+        })
+    }
+    async editCategory(req:Request):Promise<Category> {
+        const { id } = req.params
+        const { name }:ICategory = await req.body
+        return await categoryModel.update({
+            data: { 
+                name
+            },
+            where: { 
+                id
             }
         })
     }
