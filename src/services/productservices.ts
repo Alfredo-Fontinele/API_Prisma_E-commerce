@@ -11,11 +11,10 @@ class ProductServices {
         return await productModel.findMany()
     }
     async createProduct(req:Request) {
-        const { name, price }:IProduct = await req.body
+        const { name, price, image, description, isStock }:IProduct = await req.body
         return await productModel.create({
             data: {
-                name,
-                price
+                name, price, image, description, isStock
             }
         })
     }

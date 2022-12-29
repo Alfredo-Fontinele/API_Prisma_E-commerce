@@ -8,10 +8,13 @@ datasource db {
 }
 
 model Product {
-  id         String   @id @default(uuid())
-  name       String
-  price      Decimal
-  created_at DateTime @default(now())
+  id          String   @id @default(uuid())
+  name        String
+  price       Decimal
+  description String
+  image       String
+  isStock     Boolean  @default(true)
+  created_at  DateTime @default(now())
   ProductCategory ProductCategory[]
   @@map("products")
 }
