@@ -1,5 +1,5 @@
-import { verifyAlreadyExistCategoryByName } from './../middlewares/verifyAlreadyExistCategoryByName'
-import { verifyExistCategoryById } from '../middlewares/verifyExistCategoryById'
+import { verifyAlreadyExistCategoryByName } from '../middlewares/categories/verifyAlreadyExistCategoryByName'
+import { verifyExistCategoryById } from '../middlewares/categories/verifyExistCategoryById'
 import { createCategorySchema } from './../schemas/createCategorySchema'
 import { categoryControllers } from '../controllers/categoryControllers'
 import { validateSchema } from './../middlewares/validations/validateSchema'

@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express'
-import { IProduct } from './../interfaces/products'
-import { AppError } from './../errors/appError'
-import { categoryModel } from './../database/index';
+import { IProduct } from '../../interfaces/products'
+import { AppError } from '../../errors/appError'
+import { categoryModel } from '../../database/index';
 
 export const verifyAlreadyExistCategoryByName = async (req:Request, res:Response, next:NextFunction) => {
     const body:IProduct = await req.body

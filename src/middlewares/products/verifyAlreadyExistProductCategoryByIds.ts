@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express'
-import { AppError } from '../errors/appError'
-import { IProductCategory } from '../interfaces/productCategories'
-import { productCategoryModel } from '../database/index'
+import { AppError } from '../../errors/appError'
+import { IProductCategory } from '../../interfaces/productCategories'
+import { productCategoryModel } from '../../database/index'
 
 export const verifyAlreadyExistProductCategoryByIds = async (req:Request, res:Response, next:NextFunction) => {
     const body:IProductCategory = await req.body
@@ -12,7 +12,7 @@ export const verifyAlreadyExistProductCategoryByIds = async (req:Request, res:Re
         }
     })
     if (productFound) {
-        throw new AppError('Product`s name Already Exist', 400)
+        throw new AppError('Product already exists in this category', 400)
     }
     return next()
 }

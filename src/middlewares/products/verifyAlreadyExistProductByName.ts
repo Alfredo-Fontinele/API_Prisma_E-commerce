@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express'
-import { productModel } from '../database'
-import { IProduct } from './../interfaces/products'
-import { AppError } from './../errors/appError'
+import { productModel } from '../../database'
+import { IProduct } from '../../interfaces/products'
+import { AppError } from '../../errors/appError'
 
 export const verifyAlreadyExistProductByName = async (req:Request, res:Response, next:NextFunction) => {
     const body:IProduct = await req.body

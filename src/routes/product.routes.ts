@@ -1,12 +1,14 @@
-import { verifyAlreadyExistProductCategoryByIds } from '../middlewares/verifyAlreadyExistProductCategoryByIds'
-import { verifyAlreadyExistProductByName } from './../middlewares/verifyAlreadyExistProductByName'
+import { verifyAlreadyExistProductCategoryByIds } from '../middlewares/products/verifyAlreadyExistProductCategoryByIds'
+import { verifyAlreadyExistProductByName } from '../middlewares/products/verifyAlreadyExistProductByName'
 import { createProductCategorySchema } from './../schemas/createProductCategorySchema'
-import { verifyExistProductById } from './../middlewares/verifyExistProductById'
+import { validateIdCategory } from './../middlewares/validations/validateIdCategory'
+import { verifyExistCategoryById } from '../middlewares/categories/verifyExistCategoryById'
+import { validateIdProduct } from './../middlewares/validations/validateIdProduct'
+import { verifyExistProductById } from '../middlewares/products/verifyExistProductById'
 import { validateSchema } from '../middlewares/validations/validateSchema'
 import { productControllers } from './../controllers/productControllers'
 import { createProductSchema } from './../schemas/createProductSchema'
 import { Router } from 'express'
-import { verifyExistCategoryById } from './../middlewares/verifyExistCategoryById';
 
 export const productsRoutes = Router()
 
@@ -22,8 +24,8 @@ productsRoutes.post('/',
 
 productsRoutes.post('/categories',
     validateSchema(createProductCategorySchema),
-    verifyExistProductById,
-    verifyExistCategoryById,
+    validateIdProduct,
+    validateIdCategory,
     verifyAlreadyExistProductCategoryByIds,
     productControllers.createProductCategory
 )

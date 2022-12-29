@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express'
-import { productModel } from '../database'
-import { AppError } from './../errors/appError'
+import { productModel } from '../../database'
+import { AppError } from '../../errors/appError'
 
 export const verifyExistProductById = async (req:Request, res:Response, next:NextFunction) => {
     const { id } = req.params
