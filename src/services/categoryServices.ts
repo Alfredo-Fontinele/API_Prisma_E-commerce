@@ -11,7 +11,9 @@ class CategoryServices {
     async createCategory(req:Request):Promise<Category> {
         const { name }:ICategory = await req.body
         return await categoryModel.create({
-            data: { name }
+            data: { 
+                name 
+            }
         })
     }
     async getCategoryById(req:Request):Promise<Category | null> {

@@ -4,6 +4,7 @@ CREATE TABLE "products" (
     "name" TEXT NOT NULL,
     "price" DECIMAL(65,30) NOT NULL,
     "description" TEXT NOT NULL,
+    "quantity" DECIMAL(65,30) NOT NULL,
     "image" TEXT NOT NULL,
     "isStock" BOOLEAN NOT NULL DEFAULT true,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,

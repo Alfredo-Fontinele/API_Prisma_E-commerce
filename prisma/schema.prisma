@@ -12,6 +12,7 @@ model Product {
   name        String
   price       Decimal
   description String
+  quantity    Decimal
   image       String
   isStock     Boolean  @default(true)
   created_at  DateTime @default(now())

@@ -3,5 +3,6 @@ export interface IProduct {
     price: number
     image: string
     description: string
+    quantity: number
     isStock: boolean
 }

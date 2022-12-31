@@ -1,8 +1,6 @@
 import { PrismaClient } from "@prisma/client"
 
-const prismaClient = new PrismaClient({
-    log: ["error", "info", "query", "warn"],
-})
+const prismaClient = new PrismaClient()
 
 export const categoryModel = prismaClient.category
 export const productModel = prismaClient.product
